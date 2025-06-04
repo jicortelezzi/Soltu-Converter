@@ -100,7 +100,7 @@ st.markdown(
            style="color: #1f77b4; text-decoration: none; font-weight: bold;">
            SPUD DB
         </a>.<br>
-        <span style="font-style: italic;">Developed by Juan Ignacio Cortelezzi</span><br><br>
+        <span style="font-style: italic;">Developed by Juan Ignacio Cortelezzi</span><br>
         <span style="font-style: italic;">PGSC protein and cdna data from Ivan Federico Gitman Berco</span><br><br>
     </div>
     """,
