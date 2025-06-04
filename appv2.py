@@ -6,7 +6,7 @@ import streamlit as st
 def load_data():
     return pd.read_csv("Assembly.csv", sep=",")
 # Convertir columnas clave a string y quitar espacios
-    cols = ['soltu_id', 'pgsc_id', 'dmt', 'dmc', 'dmg']
+    cols = ['soltu_id', 'pgsc_id', 'sin punto', 'dmg_sequence', 'dmt_sequence', 'evalue']
     for col in cols:
         df[col] = df[col].astype(str).str.strip()
     return df
