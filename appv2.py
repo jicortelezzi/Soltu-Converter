@@ -19,8 +19,7 @@ with st.expander("❓ How to use this tool (click to expand)"):
     st.markdown(
         """
         - Select the type of ID you want to convert (Soltu or PGSC).
-        - Enter a complete ID (e.g., `Soltu.DM.01G044060.1` or `PGSC0003DMT400004232`).<br>
-        <span style='font-size: 0.9em; color: #999;'>Example IDs: `Soltu.DM.02G012160.1` · `PGSC0003DMT400006511` · `PGSC0003DMG400006511`</span>
+        - Enter a complete ID (e.g., `Soltu.DM.01G044060.1` or `PGSC0003DMT400004232`).
         """,
         unsafe_allow_html=True
     )
@@ -39,7 +38,7 @@ if query_type != st.session_state.last_query_type:
     st.session_state.last_query_type = query_type
 
 # Input
-user_input = st.text_input("Enter gene ID:", value=st.session_state.input_value, key="input_value")
+user_input = st.text_input("Enter gene ID:", placeholder="e.g. Soltu.DM.10G021460.1", value=st.session_state.input_value, key="input_value")
 
 # Process input
 if user_input:
