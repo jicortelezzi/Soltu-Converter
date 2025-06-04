@@ -40,10 +40,10 @@ if query_type != st.session_state.last_query_type:
 # Input
 # Determinar placeholder dinámico
 if query_type == "Convert Soltu ID":
-    placeholder_text = "e.g., Soltu.DM.02G012160.1"
+    placeholder_text = "e.g., Soltu.DM.09G009070.1"
 else:
-    placeholder_text = "e.g., PGSC0003DMT400006511"
-user_input = st.text_input("Enter gene ID:", value=st.session_state.input_value, key="input_value", placeholder=placeholder_text
+    placeholder_text = "e.g., PGSC0003DMC400015119"
+user_input = st.text_input("Enter gene ID:", value=st.session_state.input_value, key="input_value", placeholder=placeholder_text)
 # Process input
 if user_input:
     if query_type == "Convert Soltu ID":
