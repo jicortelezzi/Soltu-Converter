@@ -4,7 +4,7 @@ import streamlit as st
 # Load data
 @st.cache_data
 def load_data():
-    return pd.read_csv("Assembly.csv", sep=";")
+    return pd.read_csv("Assembly.csv", sep=",")
 
 df = load_data()
 
