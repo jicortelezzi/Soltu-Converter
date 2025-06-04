@@ -15,7 +15,18 @@ df = load_data()
 # Title and description
 st.title("🧬 Potato Gene ID Converter :potato:")
 st.write("Enter a gene ID to retrieve the corresponding Soltu or PGSC identifier, along with the associated e-value (if available).")
+st.markdown(
+    """
+    #### 🔎 Instructions:
+    - Select the type of ID you want to convert (Soltu or PGSC).
+    - Enter a complete ID (e.g., `Soltu.DM.01G044060.1` or `PGSC0003DMT400004232`).
+    - If you only have a shortened Soltu ID (without the last two digits), the tool will still attempt to find a match.
+    - For PGSC input, the tool will also search for related cDNA (dmt), CDS (dmc), and protein (dmg) identifiers.
 
+    <span style='font-size: 0.9em; color: #999;'>Example IDs: `Soltu.DM.02G012160.1` · `PGSC0003DMT400006511` · `PGSC0003DMG400006511`</span>
+    """,
+    unsafe_allow_html=True
+)
 # Initialize session state
 if "last_query_type" not in st.session_state:
     st.session_state.last_query_type = "Convert Soltu"
@@ -94,3 +105,14 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+st.markdown(
+    """
+    ---
+    <div style='font-size: 0.85em; color: #666; text-align: justify;'>
+    <strong>Disclaimer:</strong><br>
+    The information provided by this tool is based on BLAST alignments and sequence similarity. While efforts have been made to ensure accuracy, users are strongly advised to validate gene identities and annotations through independent sources. We do not take responsibility for any decisions or interpretations made based on this data. Use of the information is at your own risk. This tool is intended for research and educational purposes only.
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
