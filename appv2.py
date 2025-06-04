@@ -47,7 +47,11 @@ if user_input:
             st.success(f"**PGSC ID:** `{row['pgsc_id']}`\n\n**E-value:** `{row['evalue']}`")
 
     else:  # PGSC ID to Soltu
-        match = df[df['pgsc_id'] == user_input]
+        match = df[
+            (df['pgsc_id'] == user_input) |
+            (df['dmg_sequence'] == user_input) |
+            (df['dmt_sequence'] == user_input)
+        ]
         if not match.empty:
             row = match.iloc[0]
             st.success(f"""
