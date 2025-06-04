@@ -15,18 +15,18 @@ df = load_data()
 # Title and description
 st.title("🧬 Potato Gene ID Converter :potato:")
 st.write("Enter a gene ID to retrieve the corresponding Soltu or PGSC identifier, along with the associated e-value (if available).")
-st.markdown(
-    """
-    #### 🔎 Instructions:
-    - Select the type of ID you want to convert (Soltu or PGSC).
-    - Enter a complete ID (e.g., `Soltu.DM.01G044060.1` or `PGSC0003DMT400004232`).
-    - If you only have a shortened Soltu ID (without the last two digits), the tool will still attempt to find a match.
-    - For PGSC input, the tool will also search for related cDNA (dmt), CDS (dmc), and protein (dmg) identifiers.
+with st.expander("❓ How to use this tool (click to expand)"):
+    st.markdown(
+        """
+        - Select the type of ID you want to convert (Soltu or PGSC).
+        - Enter a complete ID (e.g., `Soltu.DM.01G044060.1` or `PGSC0003DMT400004232`).
+        - If you only have a shortened Soltu ID (without the last two digits), the tool will still attempt to find a match.
+        - For PGSC input, the tool will also search for related cDNA (`dmt`), CDS (`dmc`), and protein (`dmg`) identifiers.
 
-    <span style='font-size: 0.9em; color: #999;'>Example IDs: `Soltu.DM.02G012160.1` · `PGSC0003DMT400006511` · `PGSC0003DMG400006511`</span>
-    """,
-    unsafe_allow_html=True
-)
+        <span style='font-size: 0.9em; color: #999;'>Example IDs: `Soltu.DM.02G012160.1` · `PGSC0003DMT400006511` · `PGSC0003DMG400006511`</span>
+        """,
+        unsafe_allow_html=True
+    )
 # Initialize session state
 if "last_query_type" not in st.session_state:
     st.session_state.last_query_type = "Convert Soltu"
