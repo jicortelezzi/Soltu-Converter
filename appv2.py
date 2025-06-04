@@ -19,7 +19,7 @@ with st.expander("❓ How to use this tool (click to expand)"):
     st.markdown(
         """
         - Select the type of ID you want to convert (Soltu or PGSC).
-        - Enter a complete ID (e.g., `Soltu.DM.01G044060.1` or `PGSC0003DMT400004232`).
+        - Enter a complete ID (e.g., `Soltu.DM.01G044060.1` or `PGSC0003DMT400004232`).<br>
         <span style='font-size: 0.9em; color: #999;'>Example IDs: `Soltu.DM.02G012160.1` · `PGSC0003DMT400006511` · `PGSC0003DMG400006511`</span>
         """,
         unsafe_allow_html=True
