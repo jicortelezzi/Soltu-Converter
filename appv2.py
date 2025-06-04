@@ -47,6 +47,8 @@ user_input = st.text_input("Enter gene ID:", value=st.session_state.input_value,
 # Process input
 if user_input:
     if query_type == "Convert Soltu ID":
+        if query_type == "Convert Soltu ID" and not user_input.startswith("Soltu.DM."):
+            st.warning("⚠️ Soltu ID format should start with `Soltu.DM.`")
         match = df[df['soltu_id'] == user_input]
 
         # If not found, try matching in 'sin punto' column
