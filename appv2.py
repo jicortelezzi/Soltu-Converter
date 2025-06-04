@@ -5,7 +5,11 @@ import streamlit as st
 @st.cache_data
 def load_data():
     return pd.read_csv("Assembly.csv", sep=",")
-
+# Convertir columnas clave a string y quitar espacios
+    cols = ['soltu_id', 'pgsc_id', 'dmt', 'dmc', 'dmg']
+    for col in cols:
+        df[col] = df[col].astype(str).str.strip()
+    return df
 df = load_data()
 
 # Title and description
