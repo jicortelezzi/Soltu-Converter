@@ -114,7 +114,7 @@ st.markdown(
     ---
     <div style='font-size: 0.85em; color: #666; text-align: justify;'>
     <strong>Disclaimer:</strong><br>
-    The information provided by this tool is based on BLAST alignments and sequence similarity. While efforts have been made to ensure accuracy, users are strongly advised to validate gene identities and annotations through independent sources. We do not take responsibility for any decisions or interpretations made based on this data. Use of the information is at your own risk. This tool is intended for academic and educational use only and is not affiliated with any official database or institution..
+    The information provided by this tool is based on BLAST alignments and sequence similarity. While efforts have been made to ensure accuracy, users are strongly advised to validate gene identities and annotations through independent sources. We do not take responsibility for any decisions or interpretations made based on this data. Use of the information is at your own risk. This tool is intended for academic and educational use only and is not affiliated with any official database or institution.
     </div>
     """,
     unsafe_allow_html=True
