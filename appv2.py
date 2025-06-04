@@ -59,7 +59,12 @@ if user_input:
                 st.error("Soltu ID not found.")
         else:
             row = match.iloc[0]
-            st.success(f"**PGSC ID:** `{row['pgsc_id']}`\n\n**E-value:** `{row['evalue']}`")
+            st.markdown("### ✅ Result")
+col1, col2 = st.columns(2)
+col1.metric("Soltu ID", row["soltu_id"])
+col2.metric("PGSC ID", row["pgsc_id"])
+st.markdown(f"**E-value:** `{row['evalue']}`")
+
 
     else:  # PGSC ID to Soltu
         match = df[
@@ -69,10 +74,12 @@ if user_input:
         ]
         if not match.empty:
             row = match.iloc[0]
-            st.success(f"""
-**Soltu ID:** `{row['soltu_id']}`  
-**E-value:** `{row['evalue']}`
-""")
+            st.markdown("### ✅ Result")
+col1, col2 = st.columns(2)
+col1.metric("Soltu ID", row["soltu_id"])
+col2.metric("PGSC ID", row["pgsc_id"])
+st.markdown(f"**E-value:** `{row['evalue']}`")
+
         else:
             st.error("PGSC ID not found.")
 
