@@ -98,10 +98,7 @@ st.markdown(
            style="color: #1f77b4; text-decoration: none; font-weight: bold;">
             Genetic Engineering in Plants Laboratory (INGEBI-CONICET) 🇦🇷
         </a><br>
-        Gene data obtained from 
-        <a href="https://spuddb.uga.edu/index.shtml" target="_blank"
-           style="color: #1f77b4; text-decoration: none; font-weight: bold;">
-           SPUD DB
+        Gene data obtained from SPUD DB
         </a>.<br>
         <span style="font-style: italic;">Developed by Juan Ignacio Cortelezzi</span><br>
         <span style="font-style: italic;">PGSC protein and cdna data from Ivan Federico Gitman Berco</span><br><br>
