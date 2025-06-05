@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Wake up the Streamlit app
         run: |
-          curl -A "Mozilla/5.0" https://soltu-converterv2.streamlit.app/ || echo "Streamlit app unreachable"
+          curl -A "Mozilla/5.0" https://soltu-converter.streamlit.app/ || echo "Streamlit app unreachable"
