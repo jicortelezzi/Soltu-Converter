@@ -1,20 +1,30 @@
 import pandas as pd
 import streamlit as st
+import datetime
+
+# Add this cached function to keep the app awake via periodic ping
+@st.cache_data(ttl=600)
+def keep_awake():
+    return f"Ping received at: {datetime.datetime.now()}"
+
+st.markdown(f"<!-- {keep_awake()} -->", unsafe_allow_html=True)
 
 # Load data
 @st.cache_data
 def load_data():
-    return pd.read_csv("Assembly.csv", sep=",")
-# Convertir columnas clave a string y quitar espacios
+    df = pd.read_csv("Assembly.csv", sep=",")
+    # Convertir columnas clave a string y quitar espacios
     cols = ['soltu_id', 'pgsc_id', 'sin punto', 'dmg_sequence', 'dmt_sequence', 'evalue']
     for col in cols:
         df[col] = df[col].astype(str).str.strip()
     return df
+
 df = load_data()
 
 # Title and description
 st.title("🧬 Potato Gene ID Converter :potato:")
 st.write("Enter a gene ID to retrieve the corresponding Soltu or PGSC identifier, along with the associated e-value (if available).")
+
 with st.expander("❓ How to use this tool (click to expand)"):
     st.markdown(
         """
@@ -23,6 +33,7 @@ with st.expander("❓ How to use this tool (click to expand)"):
         """,
         unsafe_allow_html=True
     )
+
 # Initialize session state
 if "last_query_type" not in st.session_state:
     st.session_state.last_query_type = "Convert Soltu"
@@ -37,13 +48,10 @@ if query_type != st.session_state.last_query_type:
     st.session_state.input_value = ""
     st.session_state.last_query_type = query_type
 
-# Input
-# Determinar placeholder dinámico
-if query_type == "Convert Soltu ID":
-    placeholder_text = "Soltu.DM.09G009070.1"
-else:
-    placeholder_text = "PGSC0003DMC400015119"
+# Input with dynamic placeholder
+placeholder_text = "Soltu.DM.09G009070.1" if query_type == "Convert Soltu ID" else "PGSC0003DMC400015119"
 user_input = st.text_input("Enter gene ID:", value=st.session_state.input_value, key="input_value", placeholder=placeholder_text)
+
 # Process input
 if user_input:
     if query_type == "Convert Soltu ID" and not user_input.startswith("Soltu.DM."):
@@ -51,10 +59,7 @@ if user_input:
     elif query_type == "Convert PGSC ID" and not user_input.startswith("PGSC"):
         st.warning("⚠️ PGSC ID format should start with `PGSC`")
     if query_type == "Convert Soltu ID":
-
         match = df[df['soltu_id'] == user_input]
-
-        # If not found, try matching in 'sin punto' column
         if match.empty:
             match = df[df['sin punto'] == user_input]
             if not match.empty:
@@ -65,8 +70,7 @@ if user_input:
         else:
             row = match.iloc[0]
             st.success(f"**PGSC ID:** `{row['pgsc_id']}`\n\n**E-value:** `{row['evalue']}`")
-
-    else:  # PGSC ID to Soltu
+    else:
         match = df[
             (df['pgsc_id'] == user_input) |
             (df['dmg_sequence'] == user_input) |
@@ -75,7 +79,6 @@ if user_input:
         if not match.empty:
             row = match.iloc[0]
             st.success(f"**Soltu ID:** `{row['soltu_id']}`\n\n**E-value:** `{row['evalue']}`")
-
         else:
             st.error("PGSC ID not found.")
 
@@ -106,6 +109,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 st.markdown(
     """
     ---
@@ -116,4 +120,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
